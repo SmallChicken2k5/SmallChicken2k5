@@ -1,3 +1,14 @@
+## <img src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/codeforces.svg" alt="Codeforces" width="28" style="vertical-align:middle; margin-right:8px;"/> Codeforces
+
+
+
+<p align="center">
+  <a href="https://codeforces.com/profile/smallchick_gia">
+    <img src="https://codeforces-readme-stats.vercel.app/api/card?username=smallchick_gia&theme=dark" alt="Codeforces Stats Card" />
+  </a>
+</p>
+
+
 ## 📈 GitHub Statistics
 <div align="center" style="display: flex; justify-content: center; align-items: center; gap: 1rem;">
   <a href="https://github.com/SmallChicken2k5">
