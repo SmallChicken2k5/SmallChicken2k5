@@ -1,25 +1,42 @@
-name: Generate Snake Animation
+name: Generate Contributions Snake
 
+# Cho phép bạn chạy tay (workflow_dispatch) và tự động hàng ngày (cron)
 on:
+  workflow_dispatch:
   schedule:
-    - cron: "0 0 * * *" # Chạy mỗi ngày
-  workflow_dispatch: # Cho phép chạy thủ công
+    - cron: '0 0 * * *'    # mỗi ngày 00:00 UTC
 
 jobs:
-  generate:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-
-      - name: Generate Snake Animation
-        uses: Platane/snk@v2
+      # 1. Checkout code (đủ lịch sử để commit lại được)
+      - uses: actions/checkout@v3
         with:
-          github_user_name: SmallChicken2k5 # Thay bằng username GitHub của bạn
-          outputs: dist/snake.svg
+          fetch-depth: 0
 
-      - name: Push Snake Animation to the Output Branch
-        uses: crazy-max/ghaction-github-pages@v2.6.0
-        with:
-          target_branch: output
-          build_dir: dist
+      # 2. Cài tool contributions-snake
+      - name: Install contributions-snake
+        run: npm install -g contributions-snake
+
+      # 3. Sinh file snake.svg
+      - name: Generate snake.svg
+        run: contributions-snake --username SmallChicken2k5 --output snake.svg
+
+      # 4. Commit & push lên repo
+      - name: Commit and push snake.svg
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add snake.svg
+          # chỉ commit nếu có thay đổi
+          if git diff --cached --exit-code; then
+            echo "No changes to snake.svg"
+          else
+            git commit -m "chore: update contributions snake"
+            git push
+          fi
+        env:
+          # đảm bảo token có quyền push vào branch của bạn
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
