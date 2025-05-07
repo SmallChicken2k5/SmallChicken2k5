@@ -47,7 +47,7 @@
   <a href="https://github.com/SmallChicken2k5">
     <img
       src="https://github-readme-activity-graph.cyclic.app/graph?username=SmallChicken2k5&theme=react-dark&hide_border=true"
-      alt="GitHub Contribution Graph"
+      alt=""
       style="width: 100%; max-width: 680px;"
     />
   </a>
