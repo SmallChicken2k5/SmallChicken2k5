@@ -1,11 +1,14 @@
-## 📊 GitHub Statistics
+## 📈 GitHub Statistics
+<div align="center" style="display: flex; justify-content: center; align-items: center; gap: 1rem;">
+  <a href="https://github.com/SmallChicken2k5">
+    <img src="https://github-readme-stats.vercel.app/api?username=SmallChicken2k5&show_icons=true&theme=radical" alt="GitHub Stats" />
+  </a>
+  <a href="https://github.com/SmallChicken2k5">
+    <img src="https://github-readme-streak-stats.herokuapp.com/?user=SmallChicken2k5&theme=radical" alt="GitHub Streak" />
+  </a>
+</div>
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=SmallChicken2k5&show_icons=true&theme=radical" alt="GitHub Stats" />
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=SmallChicken2k5&theme=radical" alt="GitHub Streak" />
-</p>
-
-## 📫 Connect with me
+## 🔗 Connect with me
 
 <p align="center">
   <a href="mailto:thp.gia@gmail.com"><img src="https://img.shields.io/badge/Personal%20Email-Contact-red?logo=gmail" alt="Personal Email" /></a>
