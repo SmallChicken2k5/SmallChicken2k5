@@ -3,33 +3,26 @@ name: Generate Contributions Snake
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * *'  # hàng ngày 00:00 UTC
+    - cron: '0 0 * * *'  # Hàng ngày lúc 00:00 UTC
 
 jobs:
-  build:
+  generate-snake:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout code (cần fetch-depth:0 để có đủ history nếu commit)
+      # 1. Checkout code
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      # 2. Cài Node.js
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      # 2. Generate Snake SVG using platane/snk Action
+      - uses: platane/snk@v3
         with:
-          node-version: '16.x'
+          github_user_name: SmallChicken2k5
+          outputs: |
+            snake.svg
 
-      # 3. Cài snk (contributions-snake) global
-      - name: Install contributions snake
-        run: npm install -g @platane/snk
-
-      # 4. Sinh file snake.svg
-      - name: Generate snake.svg
-        run: snk --username SmallChicken2k5 --output snake.svg
-
-      # 5. Commit & push nếu có thay đổi
+      # 3. Commit & push nếu có thay đổi
       - name: Commit & Push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
