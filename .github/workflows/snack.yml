@@ -1,0 +1,25 @@
+name: Generate Snake Animation
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # Chạy mỗi ngày
+  workflow_dispatch: # Cho phép chạy thủ công
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Generate Snake Animation
+        uses: Platane/snk@v2
+        with:
+          github_user_name: SmallChicken2k5 # Thay bằng username GitHub của bạn
+          outputs: dist/snake.svg
+
+      - name: Push Snake Animation to the Output Branch
+        uses: crazy-max/ghaction-github-pages@v2.6.0
+        with:
+          target_branch: output
+          build_dir: dist
