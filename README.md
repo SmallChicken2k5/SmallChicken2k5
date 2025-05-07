@@ -29,11 +29,12 @@
 <!-- ==================== CODEFORCES SECTION ==================== -->
 ### 🏆 Codeforces Stats
 <div align="center">
-  <strong>Codeforces</strong><br/>
+
   <a href="https://codeforces.com/profile/smallchick_gia">
     <img src="https://codeforces-readme-stats.vercel.app/api/card?username=smallchick_gia&theme=dark" alt="Codeforces Stats"/>
   </a>
 </div>
+
 
 ---
 
