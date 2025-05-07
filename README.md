@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://codeforces.com/profile/smallchick_gia">
-    <img src="https://codeforces-readme-stats.vercel.app/api/card?username=smallchick_gia&theme=dark" alt="Codeforces Stats Card" />
+    <img src="https://codeforces-readme-stats.vercel.app/api/card?username=smallchick_gia" alt="Codeforces Stats Card" />
   </a>
 </p>
 
