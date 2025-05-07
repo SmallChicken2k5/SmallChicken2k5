@@ -1,6 +1,5 @@
 name: Generate Contributions Snake
 
-# Bắt buộc phải cấp write permission cho contents
 permissions:
   contents: write
 
@@ -14,26 +13,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout với persist-credentials=true (mặc định) để dùng GITHUB_TOKEN
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          # bạn có thể bỏ token:… ra; checkout sẽ tự dùng GITHUB_TOKEN
           persist-credentials: true
 
-      # 2. Cài Node & snk (nếu chưa dùng action)
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 16
-      - name: Install @platane/snk
-        run: npm install -g @platane/snk
 
-      # 3. Sinh snake.svg
+      - name: Install contributions-snake
+        run: npm install -g contributions-snake
+
       - name: Generate snake.svg
-        run: snk --username SmallChicken2k5 --output snake.svg
+        run: contributions-snake --username SmallChicken2k5 --output snake.svg
 
-      # 4. Commit & push khi có thay đổi
       - name: Commit & Push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
