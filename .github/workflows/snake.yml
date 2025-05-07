@@ -1,29 +1,36 @@
 name: Generate Contributions Snake
 
+# Chuyển GITHUB_TOKEN thành write để có thể commit
+permissions:
+  contents: write
+
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * *'  # Hàng ngày lúc 00:00 UTC
+    - cron: '0 0 * * *'
 
 jobs:
-  generate-snake:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout code
-      - uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      # 2. Generate Snake SVG using platane/snk Action
-      - uses: platane/snk@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          github_user_name: SmallChicken2k5
-          outputs: |
-            snake.svg
+          node-version: '16.x'
 
-      # 3. Commit & push nếu có thay đổi
-      - name: Commit & Push
+      - name: Install @platane/snk
+        run: npm install -g @platane/snk
+
+      - name: Generate snake.svg
+        run: snk --username SmallChicken2k5 --output snake.svg
+
+      - name: Commit & Push updated snake.svg
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -31,7 +38,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add snake.svg
           if git diff --cached --exit-code; then
-            echo "✅ No changes to snake.svg"
+            echo "✅ No changes"
           else
             git commit -m "chore: update contributions snake"
             git push
